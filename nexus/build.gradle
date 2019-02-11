@@ -36,7 +36,7 @@ dependencies {
     implementation "com.android.support:appcompat-v7:${PROJECT_SUPPORTLIBV_NEXUS}"
     implementation "com.android.support:support-v4:${PROJECT_SUPPORTLIBV_NEXUS}"
     implementation "com.android.support:recyclerview-v7:${PROJECT_SUPPORTLIBV_NEXUS}"
-    implementation 'com.alibaba:fastjson:1.1.68.android'
+    implementation 'com.alibaba:fastjson:1.2.31'
 //    compile 'com.taobao.android:weex_sdk:0.18.0'
     api project(':sdk')
     //implementation 'com.squareup.okhttp:okhttp-ws:2.3.0'

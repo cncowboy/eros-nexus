@@ -142,7 +142,7 @@ dependencies {
     compileOnly "com.android.support:appcompat-v7:${PROJECT_SUPPORTLIBVERSION}"
     compileOnly "com.alibaba:fastjson:1.1.46.android"
 
-    testImplementation "com.alibaba:fastjson:1.1.46.android"
+    testImplementation "com.alibaba:fastjson:1.2.31"
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.hamcrest:hamcrest-core:1.3'
     testImplementation 'org.javassist:javassist:3.20.0-GA'
