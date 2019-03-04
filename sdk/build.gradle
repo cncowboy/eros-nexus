@@ -90,7 +90,7 @@ android {
         versionName "1.0"
         javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
         ndk {
-            abiFilters "armeabi","x86"
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
         }
     }
     buildTypes {
@@ -140,7 +140,7 @@ dependencies {
     compileOnly "com.android.support:recyclerview-v7:${PROJECT_SUPPORTLIBVERSION}"
     compileOnly "com.android.support:support-v4:${PROJECT_SUPPORTLIBVERSION}"
     compileOnly "com.android.support:appcompat-v7:${PROJECT_SUPPORTLIBVERSION}"
-    compileOnly "com.alibaba:fastjson:1.1.46.android"
+    compileOnly "com.alibaba:fastjson:1.2.31"
 
     testImplementation "com.alibaba:fastjson:1.2.31"
     testImplementation 'junit:junit:4.12'
