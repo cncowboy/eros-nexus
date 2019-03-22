@@ -253,5 +253,6 @@ public class Constant {
      */
     public static final class REQUEST_CODE {
         public static final int REQUEST_CODE_CONTRACT = 0xf71;
+        public static final int REQUEST_CODE_SMS = 0xf72;
     }
 }
