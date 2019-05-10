@@ -553,34 +553,36 @@ public abstract class  WXComponent<T extends View> implements IWXObject, IWXActi
   }
 
   private void setComponentLayoutParams(int realWidth, int realHeight, int realLeft, int realTop,
-      int realRight, int realBottom, Point rawOffset) {
+                                        int realRight, int realBottom, Point rawOffset) {
     FlatGUIContext UIImp = getInstance().getFlatUIContext();
-    WidgetContainer ancestor;
-    Widget widget;
-    if ((ancestor = UIImp.getFlatComponentAncestor(this)) != null) {
-      if (this instanceof FlatComponent && !((FlatComponent) this).promoteToView(true)) {
-        widget = ((FlatComponent) this).getOrCreateFlatWidget();
-      } else {
-        widget = UIImp.getAndroidViewWidget(this);
+    if (UIImp != null) {
+      WidgetContainer ancestor;
+      Widget widget;
+      if ((ancestor = UIImp.getFlatComponentAncestor(this)) != null) {
+        if (this instanceof FlatComponent && !((FlatComponent) this).promoteToView(true)) {
+          widget = ((FlatComponent) this).getOrCreateFlatWidget();
+        } else {
+          widget = UIImp.getAndroidViewWidget(this);
+        }
+        setWidgetParams(widget, UIImp, rawOffset, realWidth, realHeight, realLeft, realRight, realTop,
+                realBottom);
+      } else if (mHost != null) {
+        // clear box shadow before host's size changed
+        clearBoxShadow();
+        if (mDomObj.isFixed()) {
+          setFixedHostLayoutParams(mHost, realWidth, realHeight, realLeft, realRight, realTop,
+                  realBottom);
+        } else {
+          setHostLayoutParams(mHost, realWidth, realHeight, realLeft, realRight, realTop, realBottom);
+        }
+        mPreRealWidth = realWidth;
+        mPreRealHeight = realHeight;
+        mPreRealLeft = realLeft;
+        mPreRealTop = realTop;
+        onFinishLayout();
+        // restore box shadow
+        updateBoxShadow();
       }
-      setWidgetParams(widget, UIImp, rawOffset, realWidth, realHeight, realLeft, realRight, realTop,
-          realBottom);
-    } else if (mHost != null) {
-      // clear box shadow before host's size changed
-      clearBoxShadow();
-      if (mDomObj.isFixed()) {
-        setFixedHostLayoutParams(mHost, realWidth, realHeight, realLeft, realRight, realTop,
-            realBottom);
-      } else {
-        setHostLayoutParams(mHost, realWidth, realHeight, realLeft, realRight, realTop, realBottom);
-      }
-      mPreRealWidth = realWidth;
-      mPreRealHeight = realHeight;
-      mPreRealLeft = realLeft;
-      mPreRealTop = realTop;
-      onFinishLayout();
-      // restore box shadow
-      updateBoxShadow();
     }
   }
 
